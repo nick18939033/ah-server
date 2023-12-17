@@ -71,8 +71,13 @@ export const getRandomPost = async (req, res) => {
 
 export const getPost = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    res.status(200).json(post);
+    const post = await Post.findById(req.params.id)
+    if(post){
+      res.status(200).json(post);
+    }else{
+    res.status(404).json({ message: "Something went wraang" });
+
+    }
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
@@ -126,6 +131,8 @@ const likePost = asyncHandler(async (req, res) => {
             userId: post.userId,
             profilePic: user.profilePic,
             liked: true,
+            replied:false,
+            mention:false,
             id: user.id,
             desc: post.desc,
             postId: post._id,
