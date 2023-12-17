@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/server",
+    "start": "node server.js",
     "dev": "nodemon backend/server",
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
